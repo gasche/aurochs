@@ -20,15 +20,18 @@ grammar.ml: aurochs grammar.peg
 
 install: targets
 	install -m 0755 aurochs_tool.native $(BINPREFIX)/aurochs
-	mkdir -p $(TARGET)
-	install -m 0644 \
+	ocamlfind install aurochs_lib \
+	  ./META \
 	  _build/aurochs_pack.cmi \
 	  _build/aurochs_lib.a \
 	  _build/aurochs_lib.cma \
 	  _build/aurochs_lib.cmxa \
 	  _build/libaurochs.a \
 	  _build/dllaurochs.so \
-	  $(TARGET)
+
+uninstall:
+	rm $(BINPREFIX)/aurochs
+	ocamlfind remove aurochs_lib
 
 tgz:
 	hg archive -t tgz ~/pub/aurochs.tar.gz

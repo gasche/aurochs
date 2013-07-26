@@ -1,0 +1,6 @@
+name="aurochs_lib"
+version="git-trunk"
+description="PEG parser generator"
+requires = "unix"
+archive(byte)      ="aurochs_lib.cma"
+archive(native)    ="aurochs_lib.cmxa"
